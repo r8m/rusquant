@@ -1,0 +1,22 @@
+import(quantmod)#, RCurl, XML)
+export(getSymbols.Finam)
+export(getSymbols.mfd)
+export(getSymbols.rogov)
+export(getSymbols.Forts)
+export(select.hours)
+export(getOptionChain.Forts)
+export(tickToPeriod)
+export(getAllDividends)
+export(getDefaults)
+export(searchSymbol)
+export(loadStockListMfd)
+export(loadStockListFinam)
+export(loadStockListMoex)
+
+
+export( 
+       importDefaults,
+       setDefaults,
+       unsetDefaults,
+       getDefaults
+      )
