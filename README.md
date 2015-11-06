@@ -4,5 +4,4 @@
 * Добавлены функции для загрузки тикеров  mfd.ru, moex.com:  
 + *loadStockListMfd()*
 + *loadStockListMoex(market=c("MOEX", "FORTS"))*
-
-
+* Добавлены демо скрипты
