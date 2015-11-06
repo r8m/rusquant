@@ -6,7 +6,7 @@ Date: 2015-05-12
 Author: Sergey Edunov, Vyacheslav Arbuzov, Roman Lukerin
 Depends: quantmod, RCurl, XML
 Suggests:
-Maintainer: Sergey Edunov <edunov@gmail.com>
+Maintainer: Sergey Edunov <edunov@gmail.com>, Roman Lukerin <rlukerin@gmail.com>
 Description: This is an extension for quantmod framework to simplify working with Russian stock market
 LazyLoad: yes
 License: GPL-3
