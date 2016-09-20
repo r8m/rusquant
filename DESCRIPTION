@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Package: rusquant
 Type: Package
 Title: Financial Modelling Framework extension for Russian stock market
@@ -15,3 +16,21 @@ URL: http://www.algorithmist.ru/search/label/rusquant
 Packaged:
 Repository: CRAN
 Date/Publication:
+=======
+Package: rusquant
+Type: Package
+Title: Financial Modelling Framework extension for Russian stock market
+Version: 0.0.1
+Date: 2015-11-05
+Author: Sergey Edunov, Vyacheslav Arbuzov
+Depends: quantmod, RCurl, XML
+Suggests:
+Maintainer: Roman Lukerin <rlukerin@gmail.com>
+Description: This is a fork of rusquant -  an extension for quantmod framework to simplify working with Russian stock market
+LazyLoad: yes
+License: GPL-3
+URL: http://r-forge.r-project.org/projects/rusquant
+Packaged:
+Repository: CRAN
+Date/Publication:
+>>>>>>> b7ecd21ce08b32d8303c03b5d8ae40704d1c7dbf
