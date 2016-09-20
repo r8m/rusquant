@@ -1,7 +1,8 @@
+library(RCurl)
+library(XML)
 "loadStockListMfd" <-
     function (verbose = FALSE){
-        library(RCurl)
-        library(XML)
+
         tgroup<-c(5,8,1,7,3,4,2)
         
         url<-paste("http://mfd.ru/marketdata/?id=",tgroup, sep="")
