@@ -324,16 +324,13 @@ function(Symbols,env,return.class='xts',index.class='Date',
         tmp <- tempfile()
         download.file(stock.URL, destfile = tmp, quiet = TRUE)
         fr <- read.table(tmp, sep = ";", header = TRUE)
+        if(nrow(fr)==0) next
         unlink(tmp)
         if (p %in% 1:6) {
-            fr[fr[, 4] < 1e+05 & fr[, 4] >= 10000, 4] <- paste("0", 
-                                                               as.character(fr[fr[, 4] < 1e+05 & fr[, 4] >= 
-                                                                                   10000, 4]), sep = "")
-            fr[as.double(fr[, 4]) < 10000 & as.double(fr[, 4]) > 
-                   0, 4] <- paste("00", (fr[as.double(fr[, 4]) < 
-                                                10000 & as.double(fr[, 4]) > 0, 4]), sep = "")
-            fr[fr[, 4] == "0", 4] <- paste("00000", (fr[fr[, 
-                                                           4] == "0", 4]), sep = "")
+            fr[fr[, 4] < 1e+05 & fr[, 4] >= 10000, 4] <- paste("0", as.character(fr[fr[, 4] < 1e+05 & fr[, 4] >= 10000, 4]), sep = "")
+            fr[as.double(fr[, 4]) < 10000 & as.double(fr[, 4]) >  0, 4] <- paste("00", (fr[as.double(fr[, 4]) <  10000 & as.double(fr[, 4]) > 0, 4]), sep = "")
+            fr[fr[, 4] == "0", 4] <- paste("00000", (fr[fr[,  4] == "0", 4]), sep = "")
+            
             fr <- xts(apply(as.matrix(fr[, (5:10)]), 2, as.numeric), 
                       as.POSIXct(strptime(paste(fr[, 3], fr[, 4]), 
                                           "%Y%m%d %H%M%S")), src = "mfd", updated = Sys.time())
