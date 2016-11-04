@@ -6,7 +6,7 @@ library(data.table)
 #' 1min OHLC test
 symbs<-c("MXZ5 (12.2015)","MMZ5 (12.2015)")
 from<-as.Date("2015-10-15")
-to<-Sys.Date()
+to<-as.Date("2015-11-15")
 period="1min"
 for (symb in symbs)
   getSymbols(symb, from=from, to=to, period=period, src='mfd',adjust=TRUE, auto.assign=TRUE)
