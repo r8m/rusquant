@@ -575,5 +575,9 @@ http.get <- function(host, path, port=80, referer="", verbose=FALSE) {
             tickers <- loadStockListMfd()
             assign('tickers', tickers, parent.frame())
     }
-    tickers[grepl(Symbol,tickers[,4]),4]
+    res<-tickers[grepl(Symbol,tickers[,4]),4]
+    if(length(res)) 
+        return(res)
+    else 
+        return(NA)
 }
