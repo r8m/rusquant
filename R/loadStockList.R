@@ -23,26 +23,27 @@ library(XML)
 
 "loadStockListFinam" <-
     function (verbose = FALSE){
-        stocklist.URL = 'http://www.finam.ru/cache/icharts/icharts.js'
-        tmp <- tempfile()
-        download.file(stocklist.URL, destfile=tmp,quiet=!verbose)
-        fr <- readLines(con = tmp, warn=FALSE)
-        unlink(tmp)
-        ids <- sub("var .*?= \\[", "", fr[1])
-        ids <- sub("\\];", "", ids)
-        ids <- strsplit(ids, ",")
-        
-        markets <- sub("var .*?= \\[", "", fr[4])
-        markets <- sub("\\];", "", markets)
-        markets <- strsplit(markets, ",")
-        
-        names <- sub("var .*?= \\[", "", fr[3])
-        names <- sub("\\];", "", names)
-        names <- gsub("'", "", names)
-        names <- strsplit(names, ",")
-        names[[1]]->names
-        #	names[-(8497)]->names
-        res <- unlist(ids)
+      stocklist.URL = "http://www.finam.ru/cache/icharts/icharts.js"
+      tmp <- tempfile()
+      download.file(stocklist.URL, destfile = tmp)
+      fr <- readLines(con = tmp, warn = FALSE)
+      unlink(tmp)
+      ids <- sub("var .*?= \\[", "", fr[1])
+      ids <- sub("\\];", "", ids)
+      ids <- strsplit(ids, ",")
+      markets <- sub("var .*?= \\[", "", fr[4])
+      markets <- sub("\\];", "", markets)
+      markets <- strsplit(markets, ",")
+      markets<-markets[[1]]
+      names <- sub("var .*?= \\[", "", fr[3])
+      names <- strsplit(names, ",")
+      names <- names[[1]]
+      names <- sub("\\];", "", names)
+      names <- gsub("'", "", names)
+      
+      res <- unlist(ids)
+      data <- data.frame(names, res, markets)
+      
         
         data<-data.frame(names,res,markets)
         data[data[,3]!=3,]->data
@@ -82,7 +83,7 @@ library(XML)
             list.URL<-"ftp://ftp.moex.com/pub/info/stats/forts/FORTS_LIST.TXT"
             tmp <- tempfile()
             download.file(list.URL, destfile=tmp)
-            FORTSlist <- read.csv(tmp, sep=";",quote = "", stringsAsFactors=FALSE)
+            FORTSlist <- read.csv(tmp, sep=";",quote = "", stringsAsFactors=FALSE,fileEncoding="latin1")
             unlink(tmp)
             dataFORTS<-data.frame(shortSymbol=FORTSlist$short_symbol, 
                                   shortName=FORTSlist$short_name_ru, 
